@@ -6,7 +6,7 @@ Binding to
 [Example
 application](https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser-example).
 
-## What does cordova-plugin-device-motion do ?
+## What does cordova-plugin-inappbrowser do ?
 
 ```
 This plugin provides a web browser view that displays when calling
