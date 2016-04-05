@@ -33,7 +33,7 @@ binding to the *cordova.InAppBrowser* object. You must call it when the devicere
 event is handled, eg
 
 ```OCaml
-let on_device_ready =
+let on_device_ready _ =
   let inappbrowser = Inappbrowser.inappbrowser () in
   (* Some code *)
 
