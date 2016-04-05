@@ -18,10 +18,6 @@ Source: [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-i
 ## How to use ?
 
 * TODO
-* The coordinates type provides each properties as 'a Js.opt type because, when we
-did some tests, some values were set to null. See the example application for
-more informations.
-
 
 ## ! BE CAREFUL !
 
