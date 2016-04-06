@@ -1,5 +1,7 @@
 # ocaml-cordova-plugin-inappbrowser
 
+* gen_js_api (master branch): [![Build Status](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-inappbrowser.svg?branch=master)](https://travis-ci.org/dannywillems/ocaml-cordova-plugin-inappbrowser)
+
 Binding to
 [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
 
