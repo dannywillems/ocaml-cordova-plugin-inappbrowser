@@ -1,4 +1,4 @@
-let i = In_app_browser.t () in
+let i = Cordova_in_app_browser.t () in
 (* Clear cache and show InAppBrowser location bar *)
 let opt = In_app_browser.options_list_to_str [In_app_browser.location true ;
 In_app_browser.ai_clear_cache true] in

@@ -1,3 +1,3 @@
 version = "dev"
 description = "Binding to the inappbrowser cordova plugin using gen_js_api"
-archive(byte) = "in_app_browser.cma"
+archive(byte) = "cordova_in_app_browser.cma"
