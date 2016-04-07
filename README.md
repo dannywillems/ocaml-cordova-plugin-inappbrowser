@@ -17,6 +17,28 @@ This plugin provides a web browser view that displays when calling
 
 Source: [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
 
+## How to install and compile your project by using this plugin ?
+
+Don't forget to switch to a compiler **>= 4.03.0**.
+```Shell
+opam switch 4.03.0+beta1
+```
+
+You can use opam by pinning the repository with
+```Shell
+opam pin add cordova-plugin-inappbrowser https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser.git
+```
+
+and to compile your project, use
+```Shell
+ocamlfind ocamlc -c -o [output_file] -package gen_js_api -package cordova-plugin-inappbrowser [...] -linkpkg [other arguments]
+```
+
+Don't forget to install the cordova plugin inappbrowser with
+```Shell
+cordova plugin add cordova-plugin-inappbrowser
+```
+
 ## How to use ?
 
 The third argument of open method is an options list. A sum type *options* with
