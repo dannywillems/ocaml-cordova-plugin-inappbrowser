@@ -55,22 +55,3 @@ Cordova_in_app_browser.ai_clear_cache true] in
 (* Opens in the Cordova WebView if the URL is in the white list *)
 i#open_ "https://ocaml.org" (Cordova_in_app_browser.target_self) opt
 ```
-
-## ! BE CAREFUL !
-
-The plugin creates a new object called *cordova.InAppBrowser*, but the object is
-available when the *deviceready* event is handled.
-
-We provide a function *Cordova_in_app_browser.t* of type *unit -> Cordova_in_app_browser.in_app_browser* which creates the
-binding to the *cordova.InAppBrowser* object. You must call it when the deviceready
-event is handled, eg (with js_of_ocaml)
-
-```OCaml
-let on_device_ready _ =
-  let i = Cordova_in_app_browser.t () in
-  (* Some code *)
-
-let _ =
-  Dom.addEventListener Dom_html.document (Dom.Event.make "deviceready")
-  (Dom_html.handler on_device_ready) Js._false
-```
