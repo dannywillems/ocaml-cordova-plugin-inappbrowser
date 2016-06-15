@@ -208,17 +208,11 @@ let rec options_list_to_str o = match o with
 ]
 (* -------------------------------------------------------------------------- *)
 
-class in_app_browser : Ojs.t ->
-  object
-    inherit Ojs.obj
-    method open_ :  string -> (* The URL to load *)
-                    target -> (* The target in which to load the URL *)
-                    string -> (* Options for the InAppBrowser *)
-                    unit
-  end
 (* -------------------------------------------------------------------------- *)
-
-(* -------------------------------------------------------------------------- *)
-val t : unit -> in_app_browser
-[@@js.get "cordova.InAppBrowser"]
+val open_ :
+  string -> (* The URL to load *)
+  target -> (* The target in which to load the URL *)
+  string -> (* Options for the InAppBrowser *)
+  unit
+[@@js.global "cordova.InAppBrowser.open"]
 (* -------------------------------------------------------------------------- *)
