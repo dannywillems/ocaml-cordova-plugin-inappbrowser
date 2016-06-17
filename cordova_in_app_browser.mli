@@ -4,18 +4,6 @@ type target =
   | Blank [@js "_blank"]
   | System [@js "_system"]
   [@@js.enum]
-
-[@@@js.stop]
-val target_self     : target
-val target_blank    : target
-val target_system   : target
-[@@@js.start]
-
-[@@@js.implem
-let target_self     = Self
-let target_blank    = Blank
-let target_system   = System
-]
 (* -------------------------------------------------------------------------- *)
 
 (* -------------------------------------------------------------------------- *)
