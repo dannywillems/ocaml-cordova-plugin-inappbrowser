@@ -218,14 +218,14 @@ val url : t -> string
 val tgt : t -> target
 val option : t -> string
 
-[@@@js.implem
+(*[@@@js.implem*)
 
 val addEventListener :
   t                  -> (*Where to add the listener*)
   (*(unit -> unit)*)string        -> (*The event type*)
   unit
     (*[@@js.global "document.addEventListener"]*)
-    [@@js.call "on"]
+    [@@js.call]
 (*
 val addEventListener :
   (#eventTarget as 'a) t ->
@@ -234,4 +234,4 @@ val addEventListener :
   bool t -> event_listener_id
 [@@js.call "on"]
  *)
-]
+    (*]*)
