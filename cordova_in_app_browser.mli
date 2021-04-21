@@ -203,3 +203,35 @@ val open_ :
   unit
 [@@js.global "cordova.InAppBrowser.open"]
 (* -------------------------------------------------------------------------- *)
+
+(*-------------------------------TODO-------------------------------------------- *)
+type t
+
+val open_t :
+  url:string ->
+  tgt:target ->
+  option:string ->
+  t
+[@@js.builder]
+
+val url : t -> string
+val tgt : t -> target
+val option : t -> string
+
+[@@@js.implem
+
+val addEventListener :
+  t                  -> (*Where to add the listener*)
+  (*(unit -> unit)*)string        -> (*The event type*)
+  unit
+    (*[@@js.global "document.addEventListener"]*)
+    [@@js.call "on"]
+(*
+val addEventListener :
+  (#eventTarget as 'a) t ->
+  'b Event.typ ->
+  ('a t, 'b) event_listener ->
+  bool t -> event_listener_id
+[@@js.call "on"]
+ *)
+]
