@@ -227,3 +227,34 @@ val open_ :
   (* Options for the InAppBrowser *)
   unit
   [@@js.global "cordova.InAppBrowser.open"]
+
+(*Function that allow to use "InAppBrowser" object*)
+type inAppBrowser
+
+(*Same as "open_" but return a "typed" result: an "InAppBrowser" result*)
+val open_t : url:string -> tgt:target -> option:string -> inAppBrowser
+  [@@js.global "cordova.InAppBrowser.open"]
+
+val addEventListener :
+  inAppBrowser ->
+  (*Where to add the listener*)
+  eventname:string ->
+  (*The event name*)
+  f:(Ojs.t -> unit) ->
+  (*The call_back*)
+  unit
+  [@@js.call]
+
+val close : inAppBrowser -> unit [@@js.call]
+
+(*That function indicate if the plugin "cordova-InAppBrowser" is currently available*)
+[@@@js.stop]
+
+val plugin_available : unit -> bool
+
+[@@@js.start]
+
+[@@@js.implem
+let plugin_available () =
+  Js_of_ocaml.Js.Optdef.test
+    Js_of_ocaml.Js.Unsafe.global##.cordova##._InAppBrowser]
