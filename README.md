@@ -9,21 +9,22 @@ Binding to
 [Example
 application](https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser-example).
 
+## Setup a dev environment
+
+```shell
+# create a local switch
+opam install ocamlformat.0.15.0 merlin
+opam install -y .
+```
+
 ## What does cordova-plugin-inappbrowser do ?
 
-```
-This plugin provides a web browser view that displays when calling
+> This plugin provides a web browser view that displays when calling
 `cordova.InAppBrowser.open()`.
-```
 
 Source: [cordova-plugin-inappbrowser](https://github.com/apache/cordova-plugin-inappbrowser)
 
-## How to install and compile your project by using this plugin ?
-
-Don't forget to switch to a compiler **>= 4.03.0**.
-```Shell
-opam switch 4.03.0
-```
+## How to install and compile your project by using this plugin?
 
 You can use opam by pinning the repository with
 ```Shell
@@ -32,7 +33,7 @@ opam pin add cordova-plugin-inappbrowser https://github.com/dannywillems/ocaml-c
 
 and to compile your project, use
 ```Shell
-ocamlfind ocamlc -c -o [output_file] -package gen_js_api -package cordova-plugin-inappbrowser [...] -linkpkg [other arguments]
+dune build @install
 ```
 
 Don't forget to install the cordova plugin inappbrowser with
