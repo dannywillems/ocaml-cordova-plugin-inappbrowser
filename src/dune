@@ -1,0 +1,12 @@
+(rule
+ (targets cordova_in_app_browser.ml)
+ (deps cordova_in_app_browser.mli)
+ (action (run %{bin:gen_js_api} %{deps})))
+
+(library
+ (public_name cordova-plugin-inappbrowser)
+ (name cordova_in_app_browser)
+ (modes byte)
+ (libraries gen_js_api)
+  ; (preprocess (pps gen_js_api))
+)
