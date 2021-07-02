@@ -235,16 +235,31 @@ type inAppBrowser
 val open_t : url:string -> tgt:target -> option:string -> inAppBrowser
   [@@js.global "cordova.InAppBrowser.open"]
 
+type inAppBrowserEvent
+
 val addEventListener :
   inAppBrowser ->
   (*Where to add the listener*)
   eventname:string ->
   (*The event name*)
-  f:(Ojs.t -> unit) ->
+  f:(inAppBrowserEvent -> unit) ->
   (*The call_back*)
   unit
   [@@js.call]
 
+(*Getting access to the "InAppBrowserEvent" properties*)
+
+val type_ : inAppBrowserEvent -> string [@@js.get "type"]
+
+val url : inAppBrowserEvent -> string [@@js.get "url"]
+
+val code : inAppBrowserEvent -> int [@@js.get "code"]
+
+val message : inAppBrowserEvent -> string [@@js.get "message"]
+
+val data : inAppBrowserEvent -> string [@@js.get "data"]
+
+(*Indicate to close an open InAppBrowser object*)
 val close : inAppBrowser -> unit [@@js.call]
 
 (*That function indicate if the plugin "cordova-InAppBrowser" is currently available*)
