@@ -262,12 +262,18 @@ val data : inAppBrowserEvent -> string [@@js.get "data"]
 (*Indicate to close an open InAppBrowser object*)
 val close : inAppBrowser -> unit [@@js.call]
 
-(*That function indicate if the plugin "cordova-InAppBrowser" is currently available*)
 [@@@js.stop]
 
+(*Return the "data" propertie of an inAppBrowserEvent in the form of an json object*)
+val data_json : inAppBrowserEvent -> Ojs.t
+
+(*That function indicate if the plugin "cordova-InAppBrowser" is currently available*)
 val plugin_available : unit -> bool
 
 [@@@js.start]
+
+[@@@js.implem
+let data_json evt = Js_of_ocaml.Js.Unsafe.global##._JSON##stringify (data evt)]
 
 [@@@js.implem
 let plugin_available () =
