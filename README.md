@@ -57,10 +57,10 @@ Cordova_in_app_browser.ai_clear_cache true] in
 i#open_ "https://ocaml.org" (Cordova_in_app_browser.target_self) opt
 ```
 
-The function "open_t" is hte same as "open" but it return a "typed"
+The function "open_t" is the same as "open" but it return a "typed"
 result: an object of type "inAppBrowser" that can be used later. An
-"inAppBrowser" object is te only way to to call the function
-"addEventListener" and "close" of this ibrary for example
+"inAppBrowser" object is, for example, the only way to to call the
+functions "addEventListener" and "close" of this library.
 
 ```OCaml
 let popup =
@@ -74,15 +74,11 @@ Cordova_in_app_browser.addEventListener popup ~eventname:"loadstop"
         Cordova_in_app_browser.close popup)
 ```
 
-You can access the 5 properties of the argument of an added
-"EventListener" with this functions:
-                °Cordova_in_app_browser.type: either "loadstart",
-                "loadstop", "loaderror", "message", or "exit"
-                °Cordova_in_app_browser.url: not available for every
-                event type (not for "exit").
-                °Cordova_in_app_browser.code: only available for event
-                with an error code.
-                °Cordova_in_app_browser.message: only available for
-                "loaderror" event type
-                °Cordova_in_app_browser.data: onlys available for
-                "message event type
+With this functions, you can access the 5 properties of the argument of
+an added "EventListener":
+
+                ° `Cordova_in_app_browser.type`: either "loadstart", "loadstop", "loaderror", "message", or "exit"
+                °`Cordova_in_app_browser.url`: not available for every event type (not for "exit").
+                ° `Cordova_in_app_browser.code`: only available for event with an error code.
+                ° `Cordova_in_app_browser.message`: only available for "loaderror" event type
+                ° `Cordova_in_app_browser.data`: onlys available for "message" event type
