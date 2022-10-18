@@ -1,14 +1,18 @@
 opam-version: "2.0"
+version: "1.2"
 maintainer:   "Danny Willems <contact@danny-willems.be>"
 authors:      "Danny Willems <contact@danny-willems.be>"
-homepage:     "https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser"
-bug-reports:  "https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser/issues"
-dev-repo:     "https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser"
+homepage:     "git+https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser"
+bug-reports:  "git+https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser/issues"
+dev-repo:     "git+https://github.com/dannywillems/ocaml-cordova-plugin-inappbrowser"
 license:      "LGPL-3.0 with OCaml linking exception"
 description: "Binding to the inappbrowser cordova plugin using gen_js_api"
 synopsis: "Binding to the inappbrowser cordova plugin using gen_js_api"
 build: [[ "dune" "build" "-j" jobs "-p" name "@install" ]]
 depends: [
   "ocaml" { >= "4.03.0" }
+  "dune" {>= "2.8"}
   "gen_js_api"
+  "js_of_ocaml"
+  "js_of_ocaml-ppx"
 ]

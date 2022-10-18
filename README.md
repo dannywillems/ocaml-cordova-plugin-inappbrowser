@@ -56,3 +56,29 @@ Cordova_in_app_browser.ai_clear_cache true] in
 (* Opens in the Cordova WebView if the URL is in the white list *)
 i#open_ "https://ocaml.org" (Cordova_in_app_browser.target_self) opt
 ```
+
+The function "open_t" is the same as "open" but it return a "typed"
+result: an object of type "inAppBrowser" that can be used later. An
+"inAppBrowser" object is, for example, the only way to to call the
+functions "addEventListener" and "close" of this library.
+
+```OCaml
+let popup =
+    Cordova_in_app_browser.open_t
+        ~url:"https://www.google.com" ~tgt:Blank
+        ~option:"location=yes"
+in
+Cordova_in_app_browser.addEventListener popup ~eventname:"loadstop"
+~f:(fun evt ->
+        ignore (print_endline "Hello World");
+        Cordova_in_app_browser.close popup)
+```
+
+With this functions, you can access the 5 properties of the argument of
+an added "EventListener":
+
+                ° `Cordova_in_app_browser.type`: either "loadstart", "loadstop", "loaderror", "message", or "exit"
+                °`Cordova_in_app_browser.url`: not available for every event type (not for "exit").
+                ° `Cordova_in_app_browser.code`: only available for event with an error code.
+                ° `Cordova_in_app_browser.message`: only available for "loaderror" event type
+                ° `Cordova_in_app_browser.data`: onlys available for "message" event type

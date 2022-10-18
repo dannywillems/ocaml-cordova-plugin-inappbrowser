@@ -227,3 +227,55 @@ val open_ :
   (* Options for the InAppBrowser *)
   unit
   [@@js.global "cordova.InAppBrowser.open"]
+
+(*Function that allow to use "InAppBrowser" object*)
+type inAppBrowser
+
+(*Same as "open_" but return a "typed" result: an "InAppBrowser" result*)
+val open_t : url:string -> tgt:target -> option:string -> inAppBrowser
+  [@@js.global "cordova.InAppBrowser.open"]
+
+type inAppBrowserEvent
+
+val addEventListener :
+  inAppBrowser ->
+  (*Where to add the listener*)
+  eventname:string ->
+  (*The event name*)
+  f:(inAppBrowserEvent -> unit) ->
+  (*The call_back*)
+  unit
+  [@@js.call]
+
+(*Getting access to the "InAppBrowserEvent" properties*)
+
+val type_ : inAppBrowserEvent -> string [@@js.get "type"]
+
+val url : inAppBrowserEvent -> string [@@js.get "url"]
+
+val code : inAppBrowserEvent -> int [@@js.get "code"]
+
+val message : inAppBrowserEvent -> string [@@js.get "message"]
+
+val data : inAppBrowserEvent -> string [@@js.get "data"]
+
+(*Indicate to close an open InAppBrowser object*)
+val close : inAppBrowser -> unit [@@js.call]
+
+[@@@js.stop]
+
+(*Return the "data" propertie of an inAppBrowserEvent in the form of an json object*)
+val data_json : inAppBrowserEvent -> Ojs.t
+
+(*That function indicate if the plugin "cordova-InAppBrowser" is currently available*)
+val plugin_available : unit -> bool
+
+[@@@js.start]
+
+[@@@js.implem
+let data_json evt = Js_of_ocaml.Js.Unsafe.global##._JSON##stringify (data evt)]
+
+[@@@js.implem
+let plugin_available () =
+  Js_of_ocaml.Js.Optdef.test
+    Js_of_ocaml.Js.Unsafe.global##.cordova##._InAppBrowser]
